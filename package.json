@@ -1,0 +1,36 @@
+{
+  "name": "js-cpf",
+  "version": "0.0.0",
+  "description": "A simple CPF library.",
+  "author": {
+    "email": "rfcaio90@gmail.com",
+    "name": "Caio Rodrigues Fernandes",
+    "url": "https://github.com/rfcaio"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "husky": "4.2.5",
+    "jest": "26.0.1",
+    "lint-staged": "10.2.9",
+    "standard": "14.3.4"
+  },
+  "homepage": "https://github.com/rfcaio/js-cpf#readme",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "lint-staged"
+    }
+  },
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "standard"
+    ]
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rfcaio/js-cpf.git"
+  },
+  "scripts": {}
+}
