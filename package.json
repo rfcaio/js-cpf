@@ -24,7 +24,8 @@
   "license": "MIT",
   "lint-staged": {
     "*.js": [
-      "standard"
+      "standard",
+      "jest"
     ]
   },
   "private": true,
@@ -32,5 +33,7 @@
     "type": "git",
     "url": "https://github.com/rfcaio/js-cpf.git"
   },
-  "scripts": {}
+  "scripts": {
+    "test": "jest --watch"
+  }
 }
