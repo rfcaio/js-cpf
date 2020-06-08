@@ -18,6 +18,13 @@ describe('Cpf', () => {
   })
 
   describe('value property', () => {
+    test('throw an Error when trying to be setted', () => {
+      const sut = new Cpf('20422290084')
+      expect(() => {
+        sut.value = '08250839072'
+      }).toThrowError(Error)
+    })
+
     test('return cpf value', () => {
       const sut = new Cpf('20422290084')
       expect(sut.value).toEqual('20422290084')
