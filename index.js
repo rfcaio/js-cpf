@@ -12,6 +12,10 @@ class Cpf {
 
     this._value = value
   }
+
+  get value () {
+    return this._value
+  }
 }
 
 module.exports = Cpf

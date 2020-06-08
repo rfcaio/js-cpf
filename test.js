@@ -16,4 +16,11 @@ describe('Cpf', () => {
       expect(new Cpf('20422290084')).toEqual({ _value: '20422290084' })
     })
   })
+
+  describe('value property', () => {
+    test('return cpf value', () => {
+      const sut = new Cpf('20422290084')
+      expect(sut.value).toEqual('20422290084')
+    })
+  })
 })
