@@ -20,6 +20,14 @@ class Cpf {
   set value (value) {
     throw new Error()
   }
+
+  static isValid (cpf) {
+    const EQUAL_DIGITS_CPFS = Array.from({ length: 10 }, (_, i) => i.toString().repeat(11))
+    if (EQUAL_DIGITS_CPFS.includes(cpf)) {
+      return false
+    }
+    return true
+  }
 }
 
 module.exports = Cpf

@@ -30,4 +30,10 @@ describe('Cpf', () => {
       expect(sut.value).toEqual('20422290084')
     })
   })
+
+  describe('isValid', () => {
+    test('return false if cpf has eleven equal digits', () => {
+      expect(Cpf.isValid('00000000000')).toBeFalsy()
+    })
+  })
 })
