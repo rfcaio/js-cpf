@@ -6,10 +6,14 @@ describe('Cpf', () => {
   describe('constructor', () => {
     test('throw a TypeError if cpf is not a string', () => {
       expect(() => new Cpf(20422290084)).toThrowError(TypeError)
+      expect(() => new Cpf(20422290084))
+        .toThrowError('Could not create a CPF with invalid type.')
     })
 
     test('throw an Error if cpf is not an eleven character numeric string', () => {
       expect(() => new Cpf('204.222.900-84')).toThrowError(Error)
+      expect(() => new Cpf('204.222.900-84'))
+        .toThrowError('Could not create an invalid CPF.')
     })
 
     test('create a new cpf', () => {
@@ -23,6 +27,9 @@ describe('Cpf', () => {
       expect(() => {
         sut.value = '08250839072'
       }).toThrowError(Error)
+      expect(() => {
+        sut.value = '08250839072'
+      }).toThrowError('Could not set email value.')
     })
 
     test('return cpf value', () => {

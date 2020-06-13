@@ -3,11 +3,11 @@ const CPF_REGEX = /^\d{11}$/
 class Cpf {
   constructor (value) {
     if (typeof value !== 'string') {
-      throw TypeError()
+      throw TypeError('Could not create a CPF with invalid type.')
     }
 
     if (!CPF_REGEX.test(value)) {
-      throw Error()
+      throw Error('Could not create an invalid CPF.')
     }
 
     this._value = value
@@ -18,7 +18,7 @@ class Cpf {
   }
 
   set value (value) {
-    throw new Error()
+    throw new Error('Could not set email value.')
   }
 
   static _getVerifyDigit (cpf) {
