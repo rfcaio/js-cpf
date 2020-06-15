@@ -13,6 +13,10 @@ class Cpf {
     this._value = value
   }
 
+  format () {
+    return this._value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4')
+  }
+
   get value () {
     return this._value
   }
