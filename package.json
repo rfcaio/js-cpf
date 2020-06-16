@@ -17,7 +17,8 @@
   "homepage": "https://github.com/rfcaio/js-cpf#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run test:ci"
     }
   },
   "license": "MIT",
