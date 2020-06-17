@@ -1,3 +1,5 @@
+const randint = require('@rfcaio/randint')
+
 const CPF_REGEX = /^\d{11}$/
 
 class Cpf {
@@ -15,6 +17,13 @@ class Cpf {
 
   format () {
     return this._value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4')
+  }
+
+  static generate () {
+    const cpf = Array.from({ length: 9 }, () => `${randint()}`).join('')
+    const firstCheckDigit = Cpf._getVerifyDigit(cpf)
+    const secondCheckDigit = Cpf._getVerifyDigit(cpf + firstCheckDigit)
+    return cpf + firstCheckDigit + secondCheckDigit
   }
 
   get value () {

@@ -1,6 +1,10 @@
 /* eslint-env jest */
 
+const randint = require('@rfcaio/randint')
+
 const Cpf = require('.')
+
+jest.mock('@rfcaio/randint')
 
 describe('Cpf', () => {
   describe('constructor', () => {
@@ -25,6 +29,22 @@ describe('Cpf', () => {
     test('should format a valid cpf string', () => {
       const sut = new Cpf('20422290084')
       expect(sut.format()).toEqual('204.222.900-84')
+    })
+  })
+
+  describe('generate', () => {
+    test('return a randomic cpf', () => {
+      randint
+        .mockName('randint')
+        .mockReturnValueOnce(1)
+        .mockReturnValueOnce(1)
+        .mockReturnValueOnce(1)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValueOnce(4)
+        .mockReturnValue(7)
+
+      expect(Cpf.generate()).toEqual('11144477735')
     })
   })
 
