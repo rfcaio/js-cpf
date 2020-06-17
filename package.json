@@ -8,7 +8,7 @@
     "url": "https://github.com/rfcaio"
   },
   "dependencies": {
-    "@rfcaio/randint": "^1.0.0"
+    "@rfcaio/randint": "1.0.0"
   },
   "devDependencies": {
     "husky": "4.2.5",
