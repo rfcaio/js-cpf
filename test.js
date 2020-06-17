@@ -36,15 +36,17 @@ describe('Cpf', () => {
     test('return a randomic cpf', () => {
       randint
         .mockName('randint')
+        .mockReturnValueOnce(0)
+        .mockReturnValueOnce(9)
+        .mockReturnValueOnce(5)
         .mockReturnValueOnce(1)
-        .mockReturnValueOnce(1)
-        .mockReturnValueOnce(1)
-        .mockReturnValueOnce(4)
-        .mockReturnValueOnce(4)
-        .mockReturnValueOnce(4)
-        .mockReturnValue(7)
+        .mockReturnValueOnce(6)
+        .mockReturnValueOnce(7)
+        .mockReturnValueOnce(7)
+        .mockReturnValueOnce(6)
+        .mockReturnValueOnce(3)
 
-      expect(Cpf.generate()).toEqual('11144477735')
+      expect(Cpf.generate()).toEqual('09516776329')
     })
   })
 

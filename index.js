@@ -34,17 +34,13 @@ class Cpf {
     throw new Error('Could not set email value.')
   }
 
-  static _getVerifyDigit (cpf) {
-    const digitSum =
-      Array
-        .from(cpf)
-        .reduce(
-          (sum, digit, index) => (
-            sum + parseInt(digit, 10) * (cpf.length + 1 - index)
-          ), 0
-        )
-    const factor = digitSum % 11
-    return `${factor > 2 ? 11 - factor : 0}`
+  static _getVerifyDigit (value) {
+    let sum = 0
+    for (let i = 0, size = value.length; i < size; i += 1) {
+      sum += parseInt(value[i], 10) * (size + 1 - i)
+    }
+    const factor = sum % 11
+    return `${factor % 11 >= 2 ? 11 - factor : 0}`
   }
 
   static isValid (cpf) {
