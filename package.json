@@ -27,7 +27,7 @@
   "lint-staged": {
     "*.js": [
       "standard",
-      "jest"
+      "jest --passWithNoTests"
     ]
   },
   "private": true,
