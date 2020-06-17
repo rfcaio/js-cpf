@@ -20,10 +20,8 @@ class Cpf {
   }
 
   static generate () {
-    const cpf = Array.from({ length: 9 }, () => `${randint()}`).join('')
-    const firstCheckDigit = Cpf._getVerifyDigit(cpf)
-    const secondCheckDigit = Cpf._getVerifyDigit(cpf + firstCheckDigit)
-    return cpf + firstCheckDigit + secondCheckDigit
+    const value = Array.from({ length: 9 }, () => `${randint()}`).join('')
+    return Cpf._generate(value)
   }
 
   get value () {
@@ -32,6 +30,13 @@ class Cpf {
 
   set value (value) {
     throw new Error('Could not set email value.')
+  }
+
+  static _generate (value) {
+    if (value.length === 11) {
+      return value
+    }
+    return Cpf._generate(value + Cpf._getVerifyDigit(value))
   }
 
   static _getVerifyDigit (value) {
