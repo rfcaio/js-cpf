@@ -48,18 +48,15 @@ class Cpf {
     return `${factor % 11 >= 2 ? 11 - factor : 0}`
   }
 
-  static isValid (cpf) {
+  static isValid (value) {
     const EQUAL_DIGITS_CPFS =
       Array.from({ length: 10 }, (_, i) => i.toString().repeat(11))
 
-    if (EQUAL_DIGITS_CPFS.includes(cpf)) {
+    if (EQUAL_DIGITS_CPFS.includes(value)) {
       return false
     }
-    const firstNineDigits = cpf.slice(0, 9)
-    const firstCheckDigit = Cpf._getVerifyDigit(firstNineDigits)
-    const secondCheckDigit =
-      Cpf._getVerifyDigit(firstNineDigits + firstCheckDigit)
-    return cpf === firstNineDigits + firstCheckDigit + secondCheckDigit
+
+    return value === Cpf._generate(value.slice(0, 9))
   }
 }
 
