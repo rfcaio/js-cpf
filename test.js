@@ -73,11 +73,11 @@ describe('Cpf', () => {
     })
 
     test('return false if cpf is not validated internally', () => {
-      expect(Cpf.isValid('20422290080')).toBeFalsy()
+      expect(Cpf.isValid('54134690201')).toBeFalsy()
     })
 
     test('return true if cpf is validated internally', () => {
-      expect(Cpf.isValid('20422290084')).toBeTruthy()
+      expect(Cpf.isValid('54134690200')).toBeTruthy()
     })
   })
 })
