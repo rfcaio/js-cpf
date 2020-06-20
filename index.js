@@ -1,7 +1,5 @@
 const randint = require('@rfcaio/randint')
 
-const CPF_REGEX = /^\d{11}$/
-
 class Cpf {
   constructor (value) {
     if (typeof value !== 'string') {
@@ -49,14 +47,17 @@ class Cpf {
   }
 
   static isValid (value) {
+    const CPF_REGEX = /^\d{11}$/
+    const INVALID_CPFS_OF_EQUAL_DIGITS =
+      Array.from({ length: 10 }, (_, i) => {
+        return i.toString().repeat(11)
+      })
+
     if (!CPF_REGEX.test(value)) {
       return false
     }
 
-    const EQUAL_DIGITS_CPFS =
-      Array.from({ length: 10 }, (_, i) => i.toString().repeat(11))
-
-    if (EQUAL_DIGITS_CPFS.includes(value)) {
+    if (INVALID_CPFS_OF_EQUAL_DIGITS.includes(value)) {
       return false
     }
 
