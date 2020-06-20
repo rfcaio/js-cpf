@@ -49,6 +49,10 @@ class Cpf {
   }
 
   static isValid (value) {
+    if (!CPF_REGEX.test(value)) {
+      return false
+    }
+
     const EQUAL_DIGITS_CPFS =
       Array.from({ length: 10 }, (_, i) => i.toString().repeat(11))
 
