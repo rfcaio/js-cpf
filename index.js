@@ -8,7 +8,7 @@ class Cpf {
       throw TypeError('Could not create a CPF with invalid type.')
     }
 
-    if (!CPF_REGEX.test(value)) {
+    if (!Cpf.isValid(value)) {
       throw Error('Could not create an invalid CPF.')
     }
 

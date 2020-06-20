@@ -14,14 +14,12 @@ describe('Cpf', () => {
         .toThrowError('Could not create a CPF with invalid type.')
     })
 
-    test('throw an Error if cpf is not an eleven character numeric string', () => {
+    test('throw an Error if cpf is not valid', () => {
+      const spy = jest.spyOn(Cpf, 'isValid').mockReturnValue(false)
       expect(() => new Cpf('204.222.900-84')).toThrowError(Error)
       expect(() => new Cpf('204.222.900-84'))
         .toThrowError('Could not create an invalid CPF.')
-    })
-
-    test('create a new cpf', () => {
-      expect(new Cpf('20422290084')).toEqual({ _value: '20422290084' })
+      spy.mockRestore()
     })
   })
 
