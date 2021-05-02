@@ -48,16 +48,13 @@ class Cpf {
 
   static isValid (value) {
     const CPF_REGEX = /^\d{11}$/
-    const INVALID_CPFS_OF_EQUAL_DIGITS =
-      Array.from({ length: 10 }, (_, i) => {
-        return i.toString().repeat(11)
-      })
+    const CPFS_OF_EQUAL_DIGITS_REGEX = /^(\d)\1{10}$/
 
     if (!CPF_REGEX.test(value)) {
       return false
     }
 
-    if (INVALID_CPFS_OF_EQUAL_DIGITS.includes(value)) {
+    if (CPFS_OF_EQUAL_DIGITS_REGEX.test(value)) {
       return false
     }
 
