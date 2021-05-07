@@ -3,6 +3,7 @@
 const randint = require('@rfcaio/randint')
 
 const Cpf = require('.')
+const InvalidCpfError = require('./InvalidCpfError')
 
 jest.mock('@rfcaio/randint')
 
@@ -21,12 +22,12 @@ describe('Cpf', () => {
       const createCpfGreaterThanElevenDigits = () => new Cpf('204222900840')
 
       expect(createCpfLessThanElevenDigits)
-        .toThrowError(Error)
+        .toThrowError(InvalidCpfError)
       expect(createCpfLessThanElevenDigits)
         .toThrowError('Invalid CPF format.')
 
       expect(createCpfGreaterThanElevenDigits)
-        .toThrowError(Error)
+        .toThrowError(InvalidCpfError)
       expect(createCpfGreaterThanElevenDigits)
         .toThrowError('Invalid CPF format.')
     })

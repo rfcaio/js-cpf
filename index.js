@@ -1,5 +1,7 @@
 const randint = require('@rfcaio/randint')
 
+const InvalidCpfError = require('./InvalidCpfError')
+
 const CPF_FORMAT = /^\d{11}$/
 
 class Cpf {
@@ -9,7 +11,7 @@ class Cpf {
     }
 
     if (this._hasInvalidCPFFormat(value)) {
-      throw new Error('Invalid CPF format.')
+      throw new InvalidCpfError('Invalid CPF format.')
     }
 
     if (!Cpf.isValid(value)) {
@@ -68,3 +70,5 @@ class Cpf {
 }
 
 module.exports = Cpf
+
+exports.InvalidCpfError = InvalidCpfError
