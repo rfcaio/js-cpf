@@ -6,11 +6,11 @@ const CPF_FORMAT = /^\d{11}$/
 
 class Cpf {
   constructor (value) {
-    if (typeof value !== 'string') {
-      throw TypeError('Could not create a CPF with invalid type.')
+    if (this._hasInvalidCpfType(value)) {
+      throw new InvalidCpfError('Invalid CPF type.')
     }
 
-    if (this._hasInvalidCPFFormat(value)) {
+    if (this._hasInvalidCpfFormat(value)) {
       throw new InvalidCpfError('Invalid CPF format.')
     }
 
@@ -21,7 +21,11 @@ class Cpf {
     this._value = value
   }
 
-  _hasInvalidCPFFormat (value) {
+  _hasInvalidCpfType (value) {
+    return typeof value !== 'string'
+  }
+
+  _hasInvalidCpfFormat (value) {
     return !CPF_FORMAT.test(value)
   }
 

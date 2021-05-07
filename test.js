@@ -9,12 +9,12 @@ jest.mock('@rfcaio/randint')
 
 describe('Cpf', () => {
   describe('constructor', () => {
-    test('throw a TypeError if cpf is not a string', () => {
+    test('throws an error when a CPF is not a string', () => {
       const createCpfWithInvalidType = () => new Cpf(20422290084)
 
-      expect(createCpfWithInvalidType).toThrowError(TypeError)
+      expect(createCpfWithInvalidType).toThrowError(InvalidCpfError)
       expect(createCpfWithInvalidType)
-        .toThrowError('Could not create a CPF with invalid type.')
+        .toThrowError('Invalid CPF type.')
     })
 
     test('throws an error when a CPF has an invalid format', () => {
