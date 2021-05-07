@@ -1,9 +1,15 @@
 const randint = require('@rfcaio/randint')
 
+const CPF_FORMAT = /^\d{11}$/
+
 class Cpf {
   constructor (value) {
     if (typeof value !== 'string') {
       throw TypeError('Could not create a CPF with invalid type.')
+    }
+
+    if (this._hasInvalidCPFFormat(value)) {
+      throw new Error('Invalid CPF format.')
     }
 
     if (!Cpf.isValid(value)) {
@@ -11,6 +17,10 @@ class Cpf {
     }
 
     this._value = value
+  }
+
+  _hasInvalidCPFFormat (value) {
+    return !CPF_FORMAT.test(value)
   }
 
   format () {
@@ -47,12 +57,7 @@ class Cpf {
   }
 
   static isValid (value) {
-    const CPF_REGEX = /^\d{11}$/
     const CPFS_OF_EQUAL_DIGITS_REGEX = /^(\d)\1{10}$/
-
-    if (!CPF_REGEX.test(value)) {
-      return false
-    }
 
     if (CPFS_OF_EQUAL_DIGITS_REGEX.test(value)) {
       return false

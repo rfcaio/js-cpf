@@ -16,11 +16,26 @@ describe('Cpf', () => {
         .toThrowError('Could not create a CPF with invalid type.')
     })
 
+    test('throws an error when a CPF has an invalid format', () => {
+      const createCpfLessThanElevenDigits = () => new Cpf('2042229008')
+      const createCpfGreaterThanElevenDigits = () => new Cpf('204222900840')
+
+      expect(createCpfLessThanElevenDigits)
+        .toThrowError(Error)
+      expect(createCpfLessThanElevenDigits)
+        .toThrowError('Invalid CPF format.')
+
+      expect(createCpfGreaterThanElevenDigits)
+        .toThrowError(Error)
+      expect(createCpfGreaterThanElevenDigits)
+        .toThrowError('Invalid CPF format.')
+    })
+
     test('throw an Error if cpf is not valid', () => {
       const spy = jest.spyOn(Cpf, 'isValid').mockReturnValue(false)
       expect(() => new Cpf('204.222.900-84')).toThrowError(Error)
       expect(() => new Cpf('204.222.900-84'))
-        .toThrowError('Could not create an invalid CPF.')
+        .toThrowError('Invalid CPF format.')
       spy.mockRestore()
     })
   })
