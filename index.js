@@ -11,7 +11,7 @@ class Cpf {
       throw new InvalidCpfError('Invalid CPF type.')
     }
 
-    if (this._hasInvalidCpfFormat(value)) {
+    if (this._hasInvalidFormat(value)) {
       throw new InvalidCpfError('Invalid CPF format.')
     }
 
@@ -30,7 +30,7 @@ class Cpf {
     return typeof value !== 'string'
   }
 
-  _hasInvalidCpfFormat (value) {
+  _hasInvalidFormat (value) {
     return !CPF_FORMAT.test(value)
   }
 
