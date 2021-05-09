@@ -42,10 +42,6 @@ class Cpf {
     return this._value
   }
 
-  set value (value) {
-    throw new Error('Could not set email value.')
-  }
-
   static _generate (value) {
     if (value.length === 11) {
       return value
