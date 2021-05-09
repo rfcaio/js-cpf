@@ -74,5 +74,3 @@ class Cpf {
 }
 
 module.exports = Cpf
-
-exports.InvalidCpfError = InvalidCpfError
