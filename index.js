@@ -7,7 +7,7 @@ const EQUAL_DIGITS_CPF = /^(\d)\1{10}$/
 
 class Cpf {
   constructor (value) {
-    if (this._hasInvalidCpfType(value)) {
+    if (this._hasInvalidType(value)) {
       throw new InvalidCpfError('Invalid CPF type.')
     }
 
@@ -26,7 +26,7 @@ class Cpf {
     this._value = value
   }
 
-  _hasInvalidCpfType (value) {
+  _hasInvalidType (value) {
     return typeof value !== 'string'
   }
 
