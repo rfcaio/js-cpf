@@ -32,6 +32,14 @@ describe('Cpf', () => {
         .toThrowError('Invalid CPF format.')
     })
 
+    test('throws an error when a CPF has equal digits', () => {
+      const createCpfWithEqualDigits = () => new Cpf('00000000000')
+
+      expect(createCpfWithEqualDigits).toThrowError(InvalidCpfError)
+      expect(createCpfWithEqualDigits)
+        .toThrowError('CPF with equal digits are invalid.')
+    })
+
     test('throw an Error if cpf is not valid', () => {
       const spy = jest.spyOn(Cpf, 'isValid').mockReturnValue(false)
       expect(() => new Cpf('204.222.900-84')).toThrowError(Error)
@@ -67,17 +75,6 @@ describe('Cpf', () => {
   })
 
   describe('isValid', () => {
-    test('return false if cpf is not an eleven character numeric string', () => {
-      const spy = jest.spyOn(RegExp.prototype, 'test')
-      const sut = Cpf.isValid('5413469020')
-      expect(spy).toHaveBeenCalledWith('5413469020')
-      expect(sut).toBeFalsy()
-    })
-
-    test('return false if cpf has eleven equal digits', () => {
-      expect(Cpf.isValid('00000000000')).toBeFalsy()
-    })
-
     test('return false if cpf is not validated internally', () => {
       expect(Cpf.isValid('54134690201')).toBeFalsy()
     })

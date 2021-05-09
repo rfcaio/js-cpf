@@ -3,6 +3,7 @@ const randint = require('@rfcaio/randint')
 const InvalidCpfError = require('./InvalidCpfError')
 
 const CPF_FORMAT = /^\d{11}$/
+const EQUAL_DIGITS_CPF = /^(\d)\1{10}$/
 
 class Cpf {
   constructor (value) {
@@ -12,6 +13,10 @@ class Cpf {
 
     if (this._hasInvalidCpfFormat(value)) {
       throw new InvalidCpfError('Invalid CPF format.')
+    }
+
+    if (this._hasEqualDigits(value)) {
+      throw new InvalidCpfError('CPF with equal digits are invalid.')
     }
 
     if (!Cpf.isValid(value)) {
@@ -27,6 +32,10 @@ class Cpf {
 
   _hasInvalidCpfFormat (value) {
     return !CPF_FORMAT.test(value)
+  }
+
+  _hasEqualDigits (value) {
+    return EQUAL_DIGITS_CPF.test(value)
   }
 
   format () {
@@ -59,12 +68,6 @@ class Cpf {
   }
 
   static isValid (value) {
-    const CPFS_OF_EQUAL_DIGITS_REGEX = /^(\d)\1{10}$/
-
-    if (CPFS_OF_EQUAL_DIGITS_REGEX.test(value)) {
-      return false
-    }
-
     return value === Cpf._generate(value.slice(0, 9))
   }
 }
