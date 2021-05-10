@@ -19,10 +19,6 @@ class Cpf {
       throw new InvalidCpfError('CPF with equal digits are invalid.')
     }
 
-    if (!Cpf.isValid(value)) {
-      throw Error('Could not create an invalid CPF.')
-    }
-
     this._value = value
   }
 
@@ -65,10 +61,6 @@ class Cpf {
     }
     const factor = sum % 11
     return `${factor % 11 >= 2 ? 11 - factor : 0}`
-  }
-
-  static isValid (value) {
-    return value === Cpf._generate(value.slice(0, 9))
   }
 }
 

@@ -39,14 +39,6 @@ describe('Cpf', () => {
       expect(createCpfWithEqualDigits)
         .toThrowError('CPF with equal digits are invalid.')
     })
-
-    test('throw an Error if cpf is not valid', () => {
-      const spy = jest.spyOn(Cpf, 'isValid').mockReturnValue(false)
-      expect(() => new Cpf('204.222.900-84')).toThrowError(Error)
-      expect(() => new Cpf('204.222.900-84'))
-        .toThrowError('Invalid CPF format.')
-      spy.mockRestore()
-    })
   })
 
   describe('format', () => {
@@ -71,16 +63,6 @@ describe('Cpf', () => {
         .mockReturnValueOnce(3)
 
       expect(Cpf.generate()).toEqual('09516776329')
-    })
-  })
-
-  describe('isValid', () => {
-    test('return false if cpf is not validated internally', () => {
-      expect(Cpf.isValid('54134690201')).toBeFalsy()
-    })
-
-    test('return true if cpf is validated internally', () => {
-      expect(Cpf.isValid('54134690200')).toBeTruthy()
     })
   })
 })
