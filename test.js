@@ -39,6 +39,15 @@ describe('Cpf', () => {
       expect(createCpfWithEqualDigits)
         .toThrowError('CPF with equal digits are invalid.')
     })
+
+    test('throws an error when first verify digit is invalid', () => {
+      const createCpfWithFirstVerifyDigitInvalid = () => new Cpf('09516776300')
+
+      expect(createCpfWithFirstVerifyDigitInvalid)
+        .toThrowError(InvalidCpfError)
+      expect(createCpfWithFirstVerifyDigitInvalid)
+        .toThrowError('Invalid CPF.')
+    })
   })
 
   describe('format', () => {

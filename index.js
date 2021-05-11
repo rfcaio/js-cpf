@@ -19,6 +19,10 @@ class Cpf {
       throw new InvalidCpfError('CPF with equal digits are invalid.')
     }
 
+    if (this._hasFirstVerifyDigitNotValid(value)) {
+      throw new InvalidCpfError('Invalid CPF.')
+    }
+
     this._value = value
   }
 
@@ -32,6 +36,28 @@ class Cpf {
 
   _hasEqualDigits (value) {
     return EQUAL_DIGITS_CPF.test(value)
+  }
+
+  _hasFirstVerifyDigitNotValid (value) {
+    const firstVerifyDigit = value.slice(-2, -1)
+    const firstNineDigits = value.slice(0, 9)
+    return this._getFirstVerifyDigit(firstNineDigits) !== firstVerifyDigit
+  }
+
+  _getFirstVerifyDigit (firstNineDigits) {
+    const result = this._getFirstNineDigitsChecksum(firstNineDigits) % 11
+    return String(result % 11 >= 2 ? 11 - result : 0)
+  }
+
+  _getFirstNineDigitsChecksum (firstNineDigits) {
+    let result = 0
+    let coefficient = 10
+    for (let i = 0; i < firstNineDigits.length; i += 1) {
+      const digitString = firstNineDigits[i]
+      result += coefficient * parseInt(digitString, 10)
+      coefficient -= 1
+    }
+    return result
   }
 
   format () {
