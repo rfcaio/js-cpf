@@ -45,17 +45,16 @@ class Cpf {
   }
 
   _getFirstVerifyDigit (firstNineDigits) {
-    const result = this._getFirstNineDigitsChecksum(firstNineDigits) % 11
+    const result = this._getValueChecksum(firstNineDigits) % 11
     return String(result % 11 >= 2 ? 11 - result : 0)
   }
 
-  _getFirstNineDigitsChecksum (firstNineDigits) {
+  _getValueChecksum (value) {
     let result = 0
-    let coefficient = 10
-    for (let i = 0; i < firstNineDigits.length; i += 1) {
-      const digitString = firstNineDigits[i]
-      result += coefficient * parseInt(digitString, 10)
-      coefficient -= 1
+    for (let i = 0, size = value.length; i < size; i += 1) {
+      const coefficient = size + 1 - i
+      const digit = parseInt(value[i], 10)
+      result += coefficient * digit
     }
     return result
   }
