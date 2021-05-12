@@ -48,6 +48,15 @@ describe('Cpf', () => {
       expect(createCpfWithFirstVerifyDigitInvalid)
         .toThrowError('Invalid CPF.')
     })
+
+    test('throws an error when second verify digit is invalid', () => {
+      const createCpfWithSecondVerifyDigitInvalid = () => new Cpf('09516776320')
+
+      expect(createCpfWithSecondVerifyDigitInvalid)
+        .toThrowError(InvalidCpfError)
+      expect(createCpfWithSecondVerifyDigitInvalid)
+        .toThrowError('Invalid CPF.')
+    })
   })
 
   describe('format', () => {

@@ -19,7 +19,10 @@ class Cpf {
       throw new InvalidCpfError('CPF with equal digits are invalid.')
     }
 
-    if (this._hasFirstVerifyDigitNotValid(value)) {
+    if (
+      this._hasFirstVerifyDigitNotValid(value) ||
+      this._hasSecondVerifyDigitNotValid(value)
+    ) {
       throw new InvalidCpfError('Invalid CPF.')
     }
 
@@ -46,6 +49,17 @@ class Cpf {
 
   _getFirstVerifyDigit (firstNineDigits) {
     const result = this._getValueChecksum(firstNineDigits) % 11
+    return String(result % 11 >= 2 ? 11 - result : 0)
+  }
+
+  _hasSecondVerifyDigitNotValid (value) {
+    const secondVerifyDigit = value.slice(-1)
+    const firstTenDigits = value.slice(0, 10)
+    return this._getSecondVerifyDigit(firstTenDigits) !== secondVerifyDigit
+  }
+
+  _getSecondVerifyDigit (firstTenDigits) {
+    const result = this._getValueChecksum(firstTenDigits) % 11
     return String(result % 11 >= 2 ? 11 - result : 0)
   }
 
