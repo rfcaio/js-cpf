@@ -44,22 +44,17 @@ class Cpf {
   _hasFirstVerifyDigitNotValid (value) {
     const firstVerifyDigit = value.slice(-2, -1)
     const firstNineDigits = value.slice(0, 9)
-    return this._getFirstVerifyDigit(firstNineDigits) !== firstVerifyDigit
-  }
-
-  _getFirstVerifyDigit (firstNineDigits) {
-    const result = this._getValueChecksum(firstNineDigits) % 11
-    return String(result % 11 >= 2 ? 11 - result : 0)
+    return this._getVerifyDigitFrom(firstNineDigits) !== firstVerifyDigit
   }
 
   _hasSecondVerifyDigitNotValid (value) {
     const secondVerifyDigit = value.slice(-1)
     const firstTenDigits = value.slice(0, 10)
-    return this._getSecondVerifyDigit(firstTenDigits) !== secondVerifyDigit
+    return this._getVerifyDigitFrom(firstTenDigits) !== secondVerifyDigit
   }
 
-  _getSecondVerifyDigit (firstTenDigits) {
-    const result = this._getValueChecksum(firstTenDigits) % 11
+  _getVerifyDigitFrom (value) {
+    const result = this._getValueChecksum(value) % 11
     return String(result % 11 >= 2 ? 11 - result : 0)
   }
 
