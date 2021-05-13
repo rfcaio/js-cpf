@@ -8,60 +8,58 @@ const InvalidCpfError = require('./InvalidCpfError')
 jest.mock('@rfcaio/randint')
 
 describe('Cpf', () => {
-  describe('constructor', () => {
-    test('throws an error when a CPF is not a string', () => {
-      const createCpfWithInvalidType = () => new Cpf(20422290084)
+  test('throws an error when a CPF is not a string', () => {
+    const createCpfWithInvalidType = () => new Cpf(20422290084)
 
-      expect(createCpfWithInvalidType).toThrowError(InvalidCpfError)
-      expect(createCpfWithInvalidType)
-        .toThrowError('Invalid CPF type.')
-    })
+    expect(createCpfWithInvalidType).toThrowError(InvalidCpfError)
+    expect(createCpfWithInvalidType)
+      .toThrowError('Invalid CPF type.')
+  })
 
-    test('throws an error when a CPF has an invalid format', () => {
-      const createCpfLessThanElevenDigits = () => new Cpf('2042229008')
-      const createCpfGreaterThanElevenDigits = () => new Cpf('204222900840')
+  test('throws an error when a CPF has an invalid format', () => {
+    const createCpfLessThanElevenDigits = () => new Cpf('2042229008')
+    const createCpfGreaterThanElevenDigits = () => new Cpf('204222900840')
 
-      expect(createCpfLessThanElevenDigits)
-        .toThrowError(InvalidCpfError)
-      expect(createCpfLessThanElevenDigits)
-        .toThrowError('Invalid CPF format.')
+    expect(createCpfLessThanElevenDigits)
+      .toThrowError(InvalidCpfError)
+    expect(createCpfLessThanElevenDigits)
+      .toThrowError('Invalid CPF format.')
 
-      expect(createCpfGreaterThanElevenDigits)
-        .toThrowError(InvalidCpfError)
-      expect(createCpfGreaterThanElevenDigits)
-        .toThrowError('Invalid CPF format.')
-    })
+    expect(createCpfGreaterThanElevenDigits)
+      .toThrowError(InvalidCpfError)
+    expect(createCpfGreaterThanElevenDigits)
+      .toThrowError('Invalid CPF format.')
+  })
 
-    test('throws an error when a CPF has equal digits', () => {
-      const createCpfWithEqualDigits = () => new Cpf('00000000000')
+  test('throws an error when a CPF has equal digits', () => {
+    const createCpfWithEqualDigits = () => new Cpf('00000000000')
 
-      expect(createCpfWithEqualDigits).toThrowError(InvalidCpfError)
-      expect(createCpfWithEqualDigits)
-        .toThrowError('CPF with equal digits are invalid.')
-    })
+    expect(createCpfWithEqualDigits).toThrowError(InvalidCpfError)
+    expect(createCpfWithEqualDigits)
+      .toThrowError('CPF with equal digits are invalid.')
+  })
 
-    test('throws an error when first verify digit is invalid', () => {
-      const createCpfWithFirstVerifyDigitInvalid = () => new Cpf('09516776300')
+  test('throws an error when first verify digit is invalid', () => {
+    const createCpfWithFirstVerifyDigitInvalid = () => new Cpf('09516776300')
 
-      expect(createCpfWithFirstVerifyDigitInvalid)
-        .toThrowError(InvalidCpfError)
-      expect(createCpfWithFirstVerifyDigitInvalid)
-        .toThrowError('Invalid CPF.')
-    })
+    expect(createCpfWithFirstVerifyDigitInvalid)
+      .toThrowError(InvalidCpfError)
+    expect(createCpfWithFirstVerifyDigitInvalid)
+      .toThrowError('Invalid CPF.')
+  })
 
-    test('throws an error when second verify digit is invalid', () => {
-      const createCpfWithSecondVerifyDigitInvalid = () => new Cpf('09516776320')
+  test('throws an error when second verify digit is invalid', () => {
+    const createCpfWithSecondVerifyDigitInvalid = () => new Cpf('09516776320')
 
-      expect(createCpfWithSecondVerifyDigitInvalid)
-        .toThrowError(InvalidCpfError)
-      expect(createCpfWithSecondVerifyDigitInvalid)
-        .toThrowError('Invalid CPF.')
-    })
+    expect(createCpfWithSecondVerifyDigitInvalid)
+      .toThrowError(InvalidCpfError)
+    expect(createCpfWithSecondVerifyDigitInvalid)
+      .toThrowError('Invalid CPF.')
+  })
 
-    test('not throws an error when CPF is valid', () => {
-      const createValidCpf = () => new Cpf('20001740008')
-      expect(createValidCpf).not.toThrowError(InvalidCpfError)
-    })
+  test('not throws an error when CPF is valid', () => {
+    const createValidCpf = () => new Cpf('20001740008')
+    expect(createValidCpf).not.toThrowError(InvalidCpfError)
   })
 
   describe('format', () => {
