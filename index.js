@@ -54,8 +54,8 @@ class Cpf {
   }
 
   _getVerifyDigitFrom (value) {
-    const result = this._getChecksumFrom(value) % 11
-    return String(result % 11 >= 2 ? 11 - result : 0)
+    const checksumModEleven = this._getChecksumFrom(value) % 11
+    return String(checksumModEleven % 11 >= 2 ? 11 - checksumModEleven : 0)
   }
 
   _getChecksumFrom (value) {
