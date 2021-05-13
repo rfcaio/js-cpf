@@ -1,11 +1,7 @@
 /* eslint-env jest */
 
-const randint = require('@rfcaio/randint')
-
 const Cpf = require('.')
 const InvalidCpfError = require('./InvalidCpfError')
-
-jest.mock('@rfcaio/randint')
 
 describe('Cpf', () => {
   test('throws an error when a CPF is not a string', () => {
@@ -66,24 +62,6 @@ describe('Cpf', () => {
     test('formats a valid CPF instance', () => {
       const cpf = new Cpf('20422290084')
       expect(cpf.format()).toEqual('204.222.900-84')
-    })
-  })
-
-  describe('generate', () => {
-    test('return a randomic cpf', () => {
-      randint
-        .mockName('randint')
-        .mockReturnValueOnce(0)
-        .mockReturnValueOnce(9)
-        .mockReturnValueOnce(5)
-        .mockReturnValueOnce(1)
-        .mockReturnValueOnce(6)
-        .mockReturnValueOnce(7)
-        .mockReturnValueOnce(7)
-        .mockReturnValueOnce(6)
-        .mockReturnValueOnce(3)
-
-      expect(Cpf.generate()).toEqual('09516776329')
     })
   })
 })

@@ -1,5 +1,3 @@
-const randint = require('@rfcaio/randint')
-
 const InvalidCpfError = require('./InvalidCpfError')
 
 const CPF_DIGIT_GROUPS = /^(\d{3})(\d{3})(\d{3})(\d{2})$/
@@ -77,29 +75,8 @@ class Cpf {
     return this._value.replace(CPF_DIGIT_GROUPS, '$1.$2.$3-$4')
   }
 
-  static generate () {
-    const value = Array.from({ length: 9 }, () => `${randint()}`).join('')
-    return Cpf._generate(value)
-  }
-
   get value () {
     return this._value
-  }
-
-  static _generate (value) {
-    if (value.length === 11) {
-      return value
-    }
-    return Cpf._generate(value + Cpf._getVerifyDigit(value))
-  }
-
-  static _getVerifyDigit (value) {
-    let sum = 0
-    for (let i = 0, size = value.length; i < size; i += 1) {
-      sum += parseInt(value[i], 10) * (size + 1 - i)
-    }
-    const factor = sum % 11
-    return `${factor % 11 >= 2 ? 11 - factor : 0}`
   }
 }
 
