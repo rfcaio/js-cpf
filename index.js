@@ -19,10 +19,7 @@ class Cpf {
       throw new InvalidCpfError('CPF with equal digits are invalid.')
     }
 
-    if (
-      this._hasFirstVerifyDigitNotValid(value) ||
-      this._hasSecondVerifyDigitNotValid(value)
-    ) {
+    if (this._hasInvalidVerifyDigits(value)) {
       throw new InvalidCpfError('Invalid CPF.')
     }
 
@@ -39,6 +36,13 @@ class Cpf {
 
   _hasEqualDigits (value) {
     return EQUAL_DIGITS_CPF.test(value)
+  }
+
+  _hasInvalidVerifyDigits (value) {
+    return (
+      this._hasFirstVerifyDigitNotValid(value) ||
+      this._hasSecondVerifyDigitNotValid(value)
+    )
   }
 
   _hasFirstVerifyDigitNotValid (value) {
