@@ -65,9 +65,9 @@ describe('Cpf', () => {
   })
 
   describe('format', () => {
-    test('should format a valid cpf string', () => {
-      const sut = new Cpf('20422290084')
-      expect(sut.format()).toEqual('204.222.900-84')
+    test('formats a valid CPF instance', () => {
+      const cpf = new Cpf('20422290084')
+      expect(cpf.format()).toEqual('204.222.900-84')
     })
   })
 

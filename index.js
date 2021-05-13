@@ -2,6 +2,7 @@ const randint = require('@rfcaio/randint')
 
 const InvalidCpfError = require('./InvalidCpfError')
 
+const CPF_DIGIT_GROUPS = /^(\d{3})(\d{3})(\d{3})(\d{2})$/
 const CPF_FORMAT = /^\d{11}$/
 const EQUAL_DIGITS_CPF = /^(\d)\1{10}$/
 
@@ -73,7 +74,7 @@ class Cpf {
   }
 
   format () {
-    return this._value.replace(/^(\d{3})(\d{3})(\d{3})(\d{2})$/, '$1.$2.$3-$4')
+    return this._value.replace(CPF_DIGIT_GROUPS, '$1.$2.$3-$4')
   }
 
   static generate () {
