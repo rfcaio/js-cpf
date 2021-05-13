@@ -57,6 +57,11 @@ describe('Cpf', () => {
       expect(createCpfWithSecondVerifyDigitInvalid)
         .toThrowError('Invalid CPF.')
     })
+
+    test('not throws an error when CPF is valid', () => {
+      const createValidCpf = () => new Cpf('20001740008')
+      expect(createValidCpf).not.toThrowError(InvalidCpfError)
+    })
   })
 
   describe('format', () => {
