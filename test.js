@@ -64,4 +64,11 @@ describe('Cpf', () => {
       expect(cpf.format()).toEqual('204.222.900-84')
     })
   })
+
+  describe('value', () => {
+    test('returns CPF instance value', () => {
+      const cpf = new Cpf('09516776329')
+      expect(cpf.value).toEqual('09516776329')
+    })
+  })
 })
