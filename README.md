@@ -23,5 +23,5 @@ cpf.format() // 032.216.859-71
 Returns a Cpf instance value.
 
 ```js
-cpf.format() // 03221685971
+cpf.value // 03221685971
 ```
