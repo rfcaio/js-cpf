@@ -2,7 +2,7 @@
 
 const randint = require('@rfcaio/randint')
 
-const Cpf = require('.')
+const Cpf = require('./Cpf')
 const CpfGenerator = require('./CpfGenerator')
 
 jest.mock('@rfcaio/randint')

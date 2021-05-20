@@ -1,6 +1,7 @@
 const randint = require('@rfcaio/randint')
 
-const Cpf = require('.')
+const Cpf = require('./Cpf')
+
 const getVerifyDigitFrom = require('./utils')
 
 class CpfGenerator {

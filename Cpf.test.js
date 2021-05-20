@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-const Cpf = require('.')
+const Cpf = require('./Cpf')
 const InvalidCpfError = require('./InvalidCpfError')
 
 describe('Cpf', () => {
