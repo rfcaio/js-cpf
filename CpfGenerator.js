@@ -5,16 +5,20 @@ const getVerifyDigitFrom = require('./utils')
 
 class CpfGenerator {
   generate () {
-    let firstNineRandomicDigits = ''
-    for (let i = 0; i < 9; i += 1) {
-      firstNineRandomicDigits += String(randint())
-    }
-
-    const firstVerifyDigit = getVerifyDigitFrom(firstNineRandomicDigits)
+    const firstNineDigits = this._getFirstNineDigits()
+    const firstVerifyDigit = getVerifyDigitFrom(firstNineDigits)
     const secondVerifyDigit = getVerifyDigitFrom(
-      firstNineRandomicDigits + firstVerifyDigit
+      firstNineDigits + firstVerifyDigit
     )
-    return new Cpf(firstNineRandomicDigits + firstVerifyDigit + secondVerifyDigit)
+    return new Cpf(firstNineDigits + firstVerifyDigit + secondVerifyDigit)
+  }
+
+  _getFirstNineDigits () {
+    let result = ''
+    for (let i = 0; i < 9; i += 1) {
+      result += String(randint())
+    }
+    return result
   }
 }
 
