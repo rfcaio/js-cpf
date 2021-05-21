@@ -13,4 +13,4 @@ const getChecksumFrom = (value) => {
   return result
 }
 
-module.exports = getVerifyDigitFrom
+module.exports = { getVerifyDigitFrom }

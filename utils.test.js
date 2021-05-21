@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-const getVerifyDigitFrom = require('./utils')
+const { getVerifyDigitFrom } = require('./utils')
 
 describe('getVerifyDigitFrom', () => {
   test('returns a verify digit of a numeric string', () => {
