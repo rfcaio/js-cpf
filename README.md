@@ -4,6 +4,8 @@
 
 ## Usage
 
+### `Cpf`
+
 Create an instance using Cpf constructor.
 
 ```js
