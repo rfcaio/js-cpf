@@ -1,4 +1,5 @@
 const InvalidCpfError = require('./InvalidCpfError')
+const { getVerifyDigitFrom } = require('./utils')
 
 const CPF_DIGIT_GROUPS = /^(\d{3})(\d{3})(\d{3})(\d{2})$/
 const CPF_FORMAT = /^\d{11}$/
@@ -47,28 +48,13 @@ class Cpf {
   _hasFirstVerifyDigitNotValid (value) {
     const firstVerifyDigit = value.slice(-2, -1)
     const firstNineDigits = value.slice(0, 9)
-    return this._getVerifyDigitFrom(firstNineDigits) !== firstVerifyDigit
+    return getVerifyDigitFrom(firstNineDigits) !== firstVerifyDigit
   }
 
   _hasSecondVerifyDigitNotValid (value) {
     const secondVerifyDigit = value.slice(-1)
     const firstTenDigits = value.slice(0, 10)
-    return this._getVerifyDigitFrom(firstTenDigits) !== secondVerifyDigit
-  }
-
-  _getVerifyDigitFrom (value) {
-    const checksumModEleven = this._getChecksumFrom(value) % 11
-    return String(checksumModEleven % 11 >= 2 ? 11 - checksumModEleven : 0)
-  }
-
-  _getChecksumFrom (value) {
-    let result = 0
-    for (let i = 0, size = value.length; i < size; i += 1) {
-      const coefficient = size + 1 - i
-      const digit = parseInt(value[i], 10)
-      result += coefficient * digit
-    }
-    return result
+    return getVerifyDigitFrom(firstTenDigits) !== secondVerifyDigit
   }
 
   format () {
