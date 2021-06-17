@@ -1,4 +1,4 @@
-const InvalidCpfError = require('./InvalidCpfError')
+const InvalidCpfError = require('./invalid-cpf-error')
 const { getVerifyDigitFrom } = require('./utils')
 
 const CPF_DIGIT_GROUPS = /^(\d{3})(\d{3})(\d{3})(\d{2})$/

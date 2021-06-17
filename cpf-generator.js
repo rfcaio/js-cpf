@@ -1,4 +1,4 @@
-const Cpf = require('./Cpf')
+const Cpf = require('./cpf')
 
 const { generateNineDigits, getVerifyDigitFrom } = require('./utils')
 

@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
-const Cpf = require('./Cpf')
-const CpfGenerator = require('./CpfGenerator')
+const Cpf = require('./cpf')
+const CpfGenerator = require('./cpf-generator')
 
 describe('CpfGenerator', () => {
   describe('generate', () => {

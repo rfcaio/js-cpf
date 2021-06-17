@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
-const Cpf = require('./Cpf')
-const InvalidCpfError = require('./InvalidCpfError')
+const Cpf = require('./cpf')
+const InvalidCpfError = require('./invalid-cpf-error')
 
 describe('Cpf', () => {
   test('throws an error when a CPF is not a string', () => {

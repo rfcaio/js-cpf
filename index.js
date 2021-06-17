@@ -1,5 +1,5 @@
-const Cpf = require('./Cpf')
-const CpfGenerator = require('./CpfGenerator')
-const InvalidCpfError = require('./InvalidCpfError')
+const Cpf = require('./cpf')
+const CpfGenerator = require('./cpf-generator')
+const InvalidCpfError = require('./invalid-cpf-error')
 
 module.exports = { Cpf, CpfGenerator, InvalidCpfError }
