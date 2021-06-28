@@ -7,9 +7,7 @@
     "name": "Caio Rodrigues Fernandes",
     "url": "https://github.com/rfcaio"
   },
-  "dependencies": {
-    "@rfcaio/randint": "1.0.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "husky": "4.2.5",
     "jest": "27.0.4",
