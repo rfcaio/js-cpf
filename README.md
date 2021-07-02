@@ -12,6 +12,12 @@ Create an instance using `Cpf` constructor.
 const cpf = new Cpf('03221685971')
 ```
 
+A string conversion returns the instance value.
+
+```js
+String(cpf) // 03221685971
+```
+
 ##### `format`
 
 Returns a formated `Cpf` instance value.
