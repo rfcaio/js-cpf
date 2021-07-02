@@ -57,6 +57,10 @@ class Cpf {
     return this._value.replace(CPF_DIGIT_GROUPS, '$1.$2.$3-$4')
   }
 
+  toString () {
+    return this.value
+  }
+
   get value () {
     return this._value
   }

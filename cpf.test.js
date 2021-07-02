@@ -58,6 +58,11 @@ describe('Cpf', () => {
     expect(createValidCpf).not.toThrowError(InvalidCpfError)
   })
 
+  test('returns CPF instance value at string conversion', () => {
+    const cpf = new Cpf('20422290084')
+    expect(String(cpf)).toEqual('20422290084')
+  })
+
   describe('format', () => {
     test('formats a valid CPF instance', () => {
       const cpf = new Cpf('20422290084')
