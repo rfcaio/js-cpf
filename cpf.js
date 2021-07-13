@@ -1,8 +1,8 @@
 const InvalidCpfError = require('./invalid-cpf-error')
 const { getVerifyDigitFrom } = require('./utils')
 
+const ACCEPTED_CPF_FORMAT = /^\d{11}$/
 const CPF_DIGIT_GROUPS = /^(\d{3})(\d{3})(\d{3})(\d{2})$/
-const CPF_FORMAT = /^\d{11}$/
 const EQUAL_DIGITS_CPF = /^(\d)\1{10}$/
 
 class Cpf {
@@ -27,7 +27,7 @@ class Cpf {
   }
 
   _hasInvalidFormat (value) {
-    return !CPF_FORMAT.test(value)
+    return !ACCEPTED_CPF_FORMAT.test(value)
   }
 
   _hasEqualDigits (value) {
