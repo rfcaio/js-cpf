@@ -1,4 +1,4 @@
-const Cpf = require('./cpf')
-const InvalidCpfError = require('./invalid-cpf-error')
+const Cpf = require('./src/cpf')
+const InvalidCpfError = require('./src/invalid-cpf-error')
 
 module.exports = { Cpf, InvalidCpfError }
